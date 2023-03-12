@@ -3,7 +3,6 @@
 export.cfg
 export_presets.cfg
 
-*.import
 *.cache
 *.md5
 .godot/
