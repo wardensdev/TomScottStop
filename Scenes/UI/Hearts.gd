@@ -1,7 +1,7 @@
 extends HBoxContainer
 
-var full_heart_res = preload("res://Assets/Visuals/tile_0044.png")
-var empty_heart_res = preload("res://Assets/Visuals/tile_0046.png")
+var full_heart_res = preload("res://Assets/Visuals/HeartFull.png")
+var empty_heart_res = preload("res://Assets/Visuals/HeartEmpty.png")
 
 func _on_protagonist_health_changed(health):
 	

@@ -1,8 +1,11 @@
 extends Sprite2D
 
 const MAX_SPEED = 1.0
-
 var move_speed_adj = 0.0
+var move_left = false
+
+var base_throw_interval = 5
+var throw_interval_adj = 1.0
 
 enum ProgressionType{
 	BASE,
@@ -10,10 +13,6 @@ enum ProgressionType{
 }
 
 var next_progression = ProgressionType.ADJ
-
-var base_throw_interval = 5
-var throw_interval_adj = 1.0
-var move_left = false
 
 var cymbal_res = preload("res://Scenes/ThrownObjects/cymbal.tscn")
 var tom1_res = preload("res://Scenes/ThrownObjects/tom_1.tscn")
@@ -24,7 +23,7 @@ func _ready():
 	$ThrowTimer.start(5.0)
 
 
-func _process(delta):
+func _process(_delta):
 	
 	if move_left:
 		self.global_position.x += MAX_SPEED + move_speed_adj
