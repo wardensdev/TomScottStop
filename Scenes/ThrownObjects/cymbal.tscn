@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scenes/ThrownObjects/ThrownObject.gd" id="1_pgfag"]
+[ext_resource type="Texture2D" uid="uid://cqef7o54grky0" path="res://Assets/Visuals/Cymbal.png" id="1_qobfw"]
+[ext_resource type="AudioStream" uid="uid://bilna35aq08ii" path="res://Assets/Audio/Cymbal.mp3" id="3_h6sxx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lw2n8"]
+bounce = 0.64
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyt43"]
+size = Vector2(16, 2)
+
+[node name="Cymbal" type="RigidBody2D" groups=["Thrown"]]
+collision_layer = 8
+collision_mask = 11
+mass = 1.13
+physics_material_override = SubResource("PhysicsMaterial_lw2n8")
+gravity_scale = 0.87
+max_contacts_reported = 10
+contact_monitor = true
+angular_velocity = 0.075
+script = ExtResource("1_pgfag")
+
+[node name="Cymbal1" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_qobfw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hyt43")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h6sxx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
